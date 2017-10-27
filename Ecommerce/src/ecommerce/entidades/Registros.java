@@ -10,5 +10,19 @@ package ecommerce.entidades;
  * @author Federico Alaniz
  */
 public class Registros {
+    private Venta[] lista = new Venta[100];
+
+    public Registros() {
+    }
     
+    public void agregaArticulo(Articulo art){
+        // tengo que chequear este procedimiento
+        int i=0;
+        while(i<lista.length && lista[i]!= null){
+            i++;
+        }
+        if(lista[i]==null){
+            //lista[i] = art;
+        }
+    }
 }
