@@ -9,7 +9,7 @@ package ecommerce.entidades;
  *
  * @author Federico Alaniz
  */
-public class Libro extends Articulo{
+public class Libro extends Articulo implements Detalle{
     private String isbn;
     private String editorial;
 
@@ -39,5 +39,14 @@ public class Libro extends Articulo{
         double precio = getPrecioB() * 0.8;
         
         return precio;
+    }
+     public void mostrarDetalle() {
+        
+        System.out.println("COD: "+getCod());
+        System.out.println("DESCRIPCION: "+getDesc());
+        System.out.println("ISBN: "+ getIsbn());
+        System.out.println("EDITORIAL: "+getEditorial());
+        System.out.println("PRECIO: "+calcularPrecio());
+        
     }
 }
