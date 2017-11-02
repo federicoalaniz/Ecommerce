@@ -11,15 +11,12 @@ package ecommerce.entidades;
  */
 public class Carrito {
     private int id;
-    private Articulo[] prod = new Articulo[100];
+    private Articulo[] prod;
     private Cliente cliente;
     private Vendedor vendedor;
 
-    public Carrito(int id, Articulo[] prod, Cliente cliente, Vendedor vendedor) {
-        this.id = id;
-        this.prod = prod;
-        this.cliente = cliente;
-        this.vendedor = vendedor;
+    public Carrito() {
+        prod = new Articulo[100];
     }
 
     public int getId() {
@@ -56,8 +53,13 @@ public class Carrito {
 
     
     
-    public void agregaArticulo(Articulo art){
-        try{
+    public void agregaArticulo(Articulo art) throws NullExcepcion{
+        if(art==null)
+        {
+            throw new NullExcepcion();
+        }
+        else
+        {
             int i=0;
             while(prod[i]!= null && i<prod.length){
                 i++;
@@ -65,9 +67,6 @@ public class Carrito {
             if(prod[i]==null){
                 prod[i]=art;
             }
-        }
-        catch(Exception ex){
-            
         }
     }
     public double getTotalVenta(){
@@ -81,7 +80,7 @@ public class Carrito {
     }
     public void listarArticulos(){
         int i=0;
-        System.out.println("CODIGO\tDESCRIPCION\tCANTIDAD\tPRECIO\tTOTAL");
+        System.out.println("CODIGO\tDESCRIPCION\t\tCANTIDAD\tPRECIO\tTOTAL");
         while(prod[i] != null && i < prod.length){
             System.out.println(prod[i].getCod()+ "\t"+prod[i].getDesc()+"\t"+prod[i].getCant()+ "\t"+ prod[i].calcularPrecio()+"\t"+prod[i].getCant()*prod[i].calcularPrecio() );
             i++;
